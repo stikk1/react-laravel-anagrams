@@ -10,7 +10,7 @@ class WordbaseController extends Controller
 {
     public function __invoke(): JsonResponse
     {
-        $url = 'https://www.opus.ee/lemmad2013.txt';
+        $url = config('services.wordbase.url');
 
         $response = Http::get($url);
 

@@ -35,4 +35,7 @@ return [
         ],
     ],
 
+    'wordbase' => [
+        'url' => env('WORDBASE_URL'),
+    ],
 ];
