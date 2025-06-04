@@ -17,12 +17,8 @@ const FetchWordbaseButton: FC = () => {
         try {
             const response = await axios.get<WordbaseResponse>(
                 "http://localhost/api/wordbase/fetch",
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                },
             );
+
             setMessage(response.data.message);
         } catch (error) {
             setError(

@@ -3,6 +3,7 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import FetchWordbaseButton from "./components/FetchWordbaseButton.tsx";
 import type { ReactNode } from "react";
+import AnagramSearchForm from "@/components/AnagramSearchForm.tsx";
 
 export default function App(): ReactNode {
     return (
@@ -19,6 +20,7 @@ export default function App(): ReactNode {
                     Anagram finder
                 </Typography>
                 <FetchWordbaseButton />
+                <AnagramSearchForm />
             </Stack>
         </Box>
     );
