@@ -2,13 +2,26 @@
 
 namespace Tests\Feature;
 
+use App\Jobs\FetchAndStoreWordbase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Queue;
 use Tests\TestCase;
 
 class WordbaseTest extends TestCase
 {
     use RefreshDatabase;
+
+    public function test_wordbase_fetch_dispatches_job()
+    {
+        Queue::fake();
+
+        $response = $this->getJson(route('wordbase.fetch'));
+
+        $response->assertStatus(200);
+
+        Queue::assertPushed(FetchAndStoreWordbase::class);
+    }
 
     public function test_words_can_be_fetched_and_saved_to_database(): void
     {
@@ -25,15 +38,16 @@ class WordbaseTest extends TestCase
         $this->assertDatabaseHas('words', ['word' => 'word3']);
     }
 
-    public function test_wordbase_fetch_fails_on_bad_response(): void
+    public function test_wordbase_job_fails_on_bad_response(): void
     {
         Http::fake([
             config('wordbase.url') => Http::response(null, 404),
         ]);
 
-        $response = $this->getJson(route('wordbase.fetch'));
+        $job = new FetchAndStoreWordbase;
 
-        $response->assertStatus(404)
-            ->assertJson(['message' => 'Words could not be fetched.']);
+        $job->handle();
+
+        $this->assertDatabaseCount('words', 0);
     }
 }
