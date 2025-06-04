@@ -1,3 +1,3 @@
 export interface WordbaseResponse {
-    message: string
+    message: string;
 }

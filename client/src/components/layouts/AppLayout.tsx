@@ -5,5 +5,5 @@ export default function AppLayout(): JSX.Element {
         <div className="bg-dark">
             <Outlet />
         </div>
-    )
+    );
 }
