@@ -2,8 +2,9 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import FetchWordbaseButton from "./components/FetchWordbaseButton.tsx";
+import type { ReactNode } from "react";
 
-export default function App(): JSX.Element {
+export default function App(): ReactNode {
     return (
         <Box
             sx={{
