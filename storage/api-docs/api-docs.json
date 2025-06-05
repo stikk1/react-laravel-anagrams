@@ -1,0 +1,99 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Anagram API",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/anagrams/find/{query}": {
+            "get": {
+                "tags": [
+                    "Anagrams"
+                ],
+                "summary": "Find anagrams for a given word",
+                "operationId": "findAnagrams",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "path",
+                        "description": "The word to search anagrams for",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of anagrams",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "count": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "anagram": {
+                                                        "type": "string",
+                                                        "example": "skat"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/api/wordbase/fetch": {
+            "get": {
+                "tags": [
+                    "Wordbase"
+                ],
+                "summary": "Fetch the application wordbase",
+                "operationId": "fetchWordbase",
+                "responses": {
+                    "200": {
+                        "description": "Fetch successful, job dispatched",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Words successfully fetched."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Anagrams",
+            "description": "Anagrams"
+        },
+        {
+            "name": "Wordbase",
+            "description": "Wordbase"
+        }
+    ]
+}
