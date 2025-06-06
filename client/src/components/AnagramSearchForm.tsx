@@ -30,7 +30,7 @@ const AnagramSearchForm: FC = () => {
 
         try {
             const response = await axios.get<AnagramResponse>(
-                `http://localhost/api/anagrams/find/${encodeURIComponent(formData.query)}`,
+                `${import.meta.env.VITE_API_URL}anagrams/find/${encodeURIComponent(formData.query)}`,
             );
 
             const anagrams = response.data.data.map(

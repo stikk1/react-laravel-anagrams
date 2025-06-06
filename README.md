@@ -2,6 +2,10 @@
 
 Anagram searching app using [Laravel](https://laravel.com) backend and [React](https://react.dev/) frontend.
 
+Demo: https://react-laravel-anagrams-984e2fb74f00.herokuapp.com/
+
+API documentation: https://react-laravel-anagrams-984e2fb74f00.herokuapp.com/api/documentation
+
 ### Development setup using Laravel Sail
 
 [Laravel Sail documentation](https://laravel.com/docs/12.x/sail)
@@ -59,3 +63,10 @@ npm run dev
 You should now see the Laravel application running at ``http://localhost/`` and the React frontend at ``http://localhost:5173/``
 
 API documentation will be available at [http://localhost/api/documentation](http://localhost/api/documentation)
+
+#### Testing
+
+Run backend tests with
+```bash
+sail artisan test
+```

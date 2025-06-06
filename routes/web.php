@@ -9,7 +9,7 @@ Route::get('/docs', function () {
     ]);
 })->name('l5-swagger.default.docs');
 
-Route::get('/{any}', function () {
+Route::get('/', function () {
     $index = public_path('index.html');
 
     return Response::file($index);

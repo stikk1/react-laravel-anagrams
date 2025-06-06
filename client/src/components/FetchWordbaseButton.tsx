@@ -16,7 +16,7 @@ const FetchWordbaseButton: FC = () => {
 
         try {
             const response = await axios.get<WordbaseResponse>(
-                "http://localhost/api/wordbase/fetch",
+                `${import.meta.env.VITE_API_URL}wordbase/fetch`,
             );
 
             setMessage(response.data.message);

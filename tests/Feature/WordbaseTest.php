@@ -25,6 +25,8 @@ class WordbaseTest extends TestCase
 
     public function test_words_can_be_fetched_and_saved_to_database(): void
     {
+        config(['queue.default' => 'sync']);
+
         $test = Http::fake([
             config('services.wordbase.url') => Http::response("word1\nword2\nword3", 200),
         ]);
